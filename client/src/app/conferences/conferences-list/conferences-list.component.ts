@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Conference} from "../conferences-query";
 
 @Component({
   selector: 'app-conferences-list',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConferencesListComponent implements OnInit {
 
+  @Input() conferences: Conference[];
   constructor() { }
 
   ngOnInit() {

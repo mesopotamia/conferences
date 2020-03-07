@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {Conference, ConferencesQuery} from "./conferences/conferences-query";
+import {Observable} from "apollo-link";
+import {map} from "rxjs/operators";
+import {of} from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +10,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'client';
+  conferences: Conference[];
+  constructor(private conferencesQuery: ConferencesQuery) {
+    this.conferencesQuery.fetch().subscribe(({data}) => {
+      console.log(data.conferences);
+      this.conferences = data.conferences;
+    });
+  }
 }
