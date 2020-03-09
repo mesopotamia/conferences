@@ -1,5 +1,5 @@
 <div *ngFor="let conference of conferences">
-  <div>{{conference.name}}</div>
+  <a [routerLink]="'conference/' + conference.id">{{conference.name}}</a>
   <div>{{conference.city}}</div>
   <div>{{conference.date}}</div>
 </div>
